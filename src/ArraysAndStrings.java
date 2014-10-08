@@ -143,22 +143,50 @@ public class ArraysAndStrings {
 	
 	/*
 	 * Start Question 1.6 (INCOMPLETE)
-	 * Image Rotation
+	 * Matrix Rotation right and left
 	 */
-	public void rotate(int[][] matrix){
+	public void rotateRight(int[][] matrix){
+		int n = matrix.length;
 		
-		for(int layer = 0; layer < matrix.length / 2; layer++){
+		for(int layer = 0; layer < n / 2; layer++){
+			int first = layer;
+			int last = n - 1 - layer;
 			
-			for(int i = 0 + layer; i < matrix.length - layer; i++){
-				int temp = matrix[layer][i];
+			for(int i = first; i < last; i++){
+				int offset = i - first;
 				
-				matrix[layer + i][i] = matrix[layer + i][matrix.length - 1 - layer];
+				int temp = matrix[first][i];
 				
-				matrix[layer][matrix.length - 1 - layer] = matrix[matrix.length - 1 - layer][matrix.length - 1- layer];
+				matrix[first][i] = matrix[last - offset][first];
 				
-				matrix[matrix.length - 1 - layer][matrix.length - 1 - layer] = matrix[matrix.length - 1 - layer][layer];
+				matrix[last - offset][first] = matrix[last][last - offset];
 				
-				matrix[matrix.length - 1 - layer][layer] = temp;
+				matrix[last][last - offset] = matrix[i][last];
+				
+				matrix[i][last] = temp;
+			}
+		}
+	}
+	
+	public void rotateLeft(int[][] matrix){
+		int n = matrix.length;
+		
+		for(int layer = 0; layer < n / 2; layer++){
+			int first = layer;
+			int last = n - 1 - layer;
+			
+			for(int i = first; i < last; i++){
+				int offset = i - first;
+				
+				int temp = matrix[first][i];
+				
+				matrix[first][i] = matrix[first + offset][last];
+				
+				matrix[first + offset][last] = matrix[last][last - offset];
+				
+				matrix[last][last - offset] = matrix[last - offset][first];
+				
+				matrix[last - offset][first] = temp;
 			}
 		}
 	}
@@ -166,5 +194,100 @@ public class ArraysAndStrings {
 	/*
 	 * End Question 1.6
 	 */
+	
+	/*
+	 * Start Question 1.7
+	 * Sets entire row and column of matrix to zero if one element in row or column is zero
+	 */
+	public void setZeros(int[][] matrix){
+		Boolean[] rows = new Boolean[matrix.length];
+		Boolean[] cols = new Boolean[matrix[0].length];
+		
+		for(int i = 0; i < rows.length; i++){
+			rows[i] = false;
+		}
+		
+		for(int i = 0; i < cols.length; i++){
+			cols[i] = false;
+		}
+		
+		for(int i = 0; i < matrix.length; i++){
+			for(int j = 0; j < matrix[0].length; j++){
+				if(matrix[i][j] == 0){
+					rows[i] = true;
+					cols[j] = true;
+				}
+			}
+		}
+		for(int i = 0; i < matrix.length; i++){
+			for(int j = 0; j < matrix[0].length; j++){
+				if(rows[i] || cols[j]){
+					matrix[i][j] = 0;
+				}
+			}
+		}
+	}
+	
+	/*
+	 * removeDuplicated algorithm: Removes duplicate entries from a char array
+	 */
+	public char[] removeDuplicates(char[] array){
+		Boolean[] chars = new Boolean[256];
+		char[] result = new char[265];
+		
+		for(int i = 0; i < chars.length; i++){
+			chars[i] = false;
+		}
+		
+		int current = 0;
+		for(int i = 0; i < array.length; i++){
+			int value = array[i];
+			if(chars[value] == false){
+				chars[value] = true;
+				result[current] = array[i];
+				current++;
+			}
+		}
+		return result;
+	}
+	
+	/*
+	 * averageLetters algorithm: counts the words and letters and returns the average letters per word
+	 * (small bugs with weirdly written sentences)
+	 */
+	public int averageLetters(String str){
+		int words = 0;
+		int letters = 0;
+		
+		for(int i = 0; i < str.length(); i++){
+			int value = str.charAt(i);
+			
+			if(value <= 122 && value >= 65){
+				letters++;
+			}
+			if(value == 32 && i + 1 < str.length()){
+				if(str.charAt(i + 1) <= 122 && str.charAt(i + 1) >= 65){
+					words++;
+				}
+			}
+		}
+		words ++;
+		
+		return (int) Math.round((double)letters/(double)words);
+	}
+	
+	/*
+	 * reverseString algorithms: reverses a string
+	 */
+	public String reverseString(String str){
+		StringBuffer result = new StringBuffer();
+		
+		for(int i = str.length() - 1; i >= 0; i--){
+			result.append(str.charAt(i));
+		}
+		
+		return result.toString();
+	}
+	
 	
 }
