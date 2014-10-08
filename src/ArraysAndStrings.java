@@ -3,6 +3,7 @@ public class ArraysAndStrings {
 
 	/*
 	 * Start Question 1.1
+	 * Algorithm that determines if a string has all unique characters
 	 */
 	public boolean isUniqueChars(String str){
 		if(str.length() > 256){
@@ -27,6 +28,8 @@ public class ArraysAndStrings {
 	
 	/*
 	 * Start Question 1.3
+	 * An algorithms that compares two strings and tells if they are permutations
+	 * of each other
 	 */
 	public Boolean permutation(String str, String str2){
 		if(str.length() != str2.length()){
@@ -57,6 +60,7 @@ public class ArraysAndStrings {
 	
 	/*
 	 * Start Question 1.4
+	 * Replaces the space in a string with "%20"
 	 */
 	public void replaceSpaces(char[] str, int length){
 		// Count number of spaces
@@ -92,6 +96,7 @@ public class ArraysAndStrings {
 	
 	/*
 	 * Start Question 1.5
+	 * Compresses a string in the following way Before: "aaabbbbcddd" into a3b4c1d3
 	 */
 	public String compress(String str){
 		if(getCompressedLength(str) >= str.length()){
@@ -137,7 +142,8 @@ public class ArraysAndStrings {
 	 */
 	
 	/*
-	 * Start Question 1.6
+	 * Start Question 1.6 (INCOMPLETE)
+	 * Image Rotation
 	 */
 	public void rotate(int[][] matrix){
 		
@@ -156,5 +162,9 @@ public class ArraysAndStrings {
 			}
 		}
 	}
+	
+	/*
+	 * End Question 1.6
+	 */
 	
 }
