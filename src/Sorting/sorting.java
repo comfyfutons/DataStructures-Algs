@@ -1,3 +1,4 @@
+package Sorting;
 
 public class sorting {
 	
@@ -59,6 +60,7 @@ public class sorting {
 	/*
 	 * End Merge Sort Algorithm
 	 */
+
 	
 	/*
 	 * Start Quick Sort Algorithm
@@ -93,7 +95,7 @@ public class sorting {
 			while(list[left] < pivot){
 				left++;
 			}
-			while(list[right] > pivot){
+			while(pivot < list[right]){
 				right--;
 			}
 			
