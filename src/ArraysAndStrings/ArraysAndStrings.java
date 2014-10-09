@@ -143,7 +143,7 @@ public class ArraysAndStrings {
 	 */
 	
 	/*
-	 * Start Question 1.6 (INCOMPLETE)
+	 * Start Question 1.6
 	 * Matrix Rotation right and left
 	 */
 	public void rotateRight(int[][] matrix){
