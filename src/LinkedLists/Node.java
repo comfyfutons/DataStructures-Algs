@@ -1,9 +1,11 @@
 package LinkedLists;
 
+import java.util.Hashtable;
+
 public class Node {
 	// Class Variables
-	int data;
-	Node next;
+	public int data;
+	public Node next;
 	
 	// Constructor
 	public Node(int data){
@@ -14,7 +16,7 @@ public class Node {
 	 * appendToTail Method: appends a node containing int data
 	 * to the end of the linked list starting from current node
 	 */
-	public void appendtoTail(int data){
+	public void appendToTail(int data){
 		Node current = this;
 		while(current.next != null){
 			current = current.next;
@@ -34,11 +36,11 @@ public class Node {
 		while(current.next != null){
 			if(current.next.data == data){
 				current.next = current.next.next;
-				return current;
+				return this;
 			}
 			current = current.next;
 		}
-		return current;
+		return this;
 	}
 	
 	
@@ -54,6 +56,31 @@ public class Node {
 		}
 		return counter;
 	}
+	
+	/*
+	 * Question 2.1
+	 * deleteDups Method: deletes duplicate entries in an unsorted
+	 * linked list
+	 */
+	
+	public Node deleteDups(){
+		Hashtable repeats = new Hashtable();
+		Node current = this;
+		Node previous = null;
+		
+		while(current != null){
+			if(repeats.containsKey(current.data)){
+				previous.next = current.next;
+			} else{
+				repeats.put(current.data, true);
+				previous = current;
+			}
+			current = current.next;
+		}
+		return this;
+	}
+	
+	
 	
 	/*
 	 * Question 2.2
@@ -97,6 +124,98 @@ public class Node {
 		}
 	}
 	
+	/*
+	 * Question 2.4
+	 * partition Method: separates a linked list into values
+	 * greater than and less than a given integer pivot value 
+	 * then combines the lists together
+	 */
+	public Node partition(int pivot){
+		Node left = null;
+		Node leftRoot = null;
+		Node right = null;
+		Node rightRoot = null;
+		Node main = this;
+		
+		while(main != null){
+			if(main.data < pivot){
+				if(left != null){
+					left.next = main;
+					left = left.next;
+				} else{
+					left = main;
+					leftRoot = left;
+				}
+			} else{
+				if(right != null){
+					right.next = main;
+					right = right.next;
+				} else{
+					right = main;
+					rightRoot = right;
+				}
+			}
+			main = main.next;
+		}
+		if(leftRoot == null){
+			return rightRoot;
+		} else{
+			if(right != null){
+				right.next = null;
+				left.next = rightRoot;
+			}
+			return leftRoot;
+		}
+	}
+	
+	/*
+	 * Question 2.6
+	 * findBegining Method: Find where a linked list loop starts
+	 */
+	public Node findBegining(Node list){
+		Node slow = list;
+		Node fast = list;
+		
+		while(fast!= null && fast.next != null){
+			slow = slow.next;
+			fast = fast.next.next;
+			if(slow == fast){
+				break;
+			}
+		}
+		
+		if(fast == null || fast.next == null){
+			return null;
+		}
+		
+		slow = list;
+		while(slow!= fast){
+			slow = slow.next;
+			fast = fast.next;
+		}
+		
+		return fast;
+	}
+	
+	/*
+	 * isLooped Method: checks if a linked list has a loop
+	 */
+	public boolean isLooped(Node list){
+		Node slow = list;
+		Node fast = list;
+		
+		while(fast != null && fast.next != null){
+			slow = slow.next;
+			fast = fast.next.next;
+			if(slow == fast){
+				return true;
+			}
+		}
+		
+		return false;
+	}
+
+	
 	
 	/*
 	 * toString Method: Returns a string representation of the
@@ -112,6 +231,17 @@ public class Node {
 		}
 		toString.append(current.data);
 		return toString.toString();
+	}
+
+	//testing toString for looping
+	public void toString2(){
+		int counter = 0;
+		Node current = this;
+		while(current.next != null && counter <= 100){
+			System.out.println(current.data);
+			current = current.next;
+			counter++;
+		}
 	}
 	
 }

@@ -1,7 +1,7 @@
 package Sorting;
 
-public class sorting {
-	
+public class Sorter {
+
 	/*
 	 * Start Merge Sort Algorithm
 	 * Merge sort recursively breaks an unsorted array down into lists with 1 
@@ -64,7 +64,8 @@ public class sorting {
 	
 	/*
 	 * Start Quick Sort Algorithm
-	 * Quick sort chooses a pivot point from the center of the list and moves all the 
+	 * Quick so
+	 * rt chooses a pivot point from the center of the list and moves all the 
 	 * larger values to the right and all the lower values to the left. it does this 
 	 * by incrementing up from the left and down from the right till it finds values 
 	 * less and greater than the pivot. It then swaps these values and continues 
@@ -73,9 +74,7 @@ public class sorting {
 	 * recursively searches the left and right side with the same function.
 	 */
 	public void quickSort(int[] list){
-		int left = 0;
-		int right = list.length - 1;
-		quickSort(list, left, right);
+		quickSort(list, 0, list.length - 1);
 	}
 	
 	private void quickSort(int[] list, int left, int right){
