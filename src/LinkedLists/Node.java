@@ -25,7 +25,7 @@ public class Node {
 	}
 	
 	/*
-	 * deleteNode Method: deletes the first occurences of a node in the
+	 * deleteNode Method: deletes the first occurrences of a node in the
 	 * linked list starting from current node
 	 */
 	public Node deleteNode(int data){

@@ -143,8 +143,8 @@ public class ArraysAndStrings {
 	 */
 	
 	/*
-	 * Start Question 1.6
-	 * Matrix Rotation right and left
+	 * Start Question 1.6 (INCOMPLETE)
+	 * Square Matrix Rotation right and left (in place)
 	 */
 	public void rotateRight(int[][] matrix){
 		int n = matrix.length;

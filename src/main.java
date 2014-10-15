@@ -4,6 +4,7 @@ import java.util.Stack;
 import LinkedLists.Node;
 import Sorting.Sorter;
 import StacksAndQueues.Queue;
+import TreesAndGraphs.TreeNode;
 import ArraysAndStrings.ArraysAndStrings;
 
 public class main {
@@ -55,12 +56,19 @@ public class main {
 		queue1.push(4);
 		queue1.push(10);
 		
+		TreeNode root = new TreeNode(5);
+			root.left = new TreeNode(3);
+				root.left.left = new TreeNode(2);
+				root.left.right = new TreeNode(4);
+			root.right = new TreeNode(7);
+				root.right.left = new TreeNode(6);
+				root.right.right = new TreeNode(8);
+		
 
 		
 		/*
 		 * PLACE RUNNING CODE HERE
 		 */
-		
 		
 		/*
 		 * PLACE RUNNING CODE HERE

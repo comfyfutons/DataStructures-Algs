@@ -40,5 +40,4 @@ public class Queue {
 		}
 		return result.toString();
 	}
-
 }
